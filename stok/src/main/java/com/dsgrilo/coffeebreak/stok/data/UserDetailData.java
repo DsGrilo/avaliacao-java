@@ -1,4 +1,4 @@
-package com.dsgrilo.coffeebreak.stok.security;
+package com.dsgrilo.coffeebreak.stok.data;
 
 import com.dsgrilo.coffeebreak.stok.model.UserModel;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,6 +1,7 @@
 package com.dsgrilo.coffeebreak.stok.model;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -13,15 +14,19 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
+// CLASSE UTILIZADA COMO MODELO DA ENTIDADE
+
+
+// USADO ANNOTATIONS DO LOMBOK PARA GERAR OS GETTER E SETTERS
 @Entity
 @Setter
 @Getter
 @EqualsAndHashCode
 public class UserModel {
 
+    // @ID informa que este atributoi será o ID da entidade no banco de dados
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", updatable = false, unique = true, nullable = false)
     private UUID uiid_user = UUID.randomUUID();
 
     @NotBlank(message = "Login is Required")
@@ -34,6 +39,7 @@ public class UserModel {
 
     @NotBlank
     @Column(nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @NotNull
