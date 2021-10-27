@@ -40,8 +40,9 @@ public class JWTConfiguration extends WebSecurityConfigurerAdapter {
         // addFilters utilizado para lançar as classes criadas de filtros de autenticação
         // disabilitado csrf por estar em ambiente dev
         http.csrf().disable().authorizeRequests()
-                .antMatchers(HttpMethod.POST,"/user/create" ).permitAll()
-                .antMatchers(HttpMethod.POST,"/login" ).permitAll()
+                .antMatchers(HttpMethod.POST,"/user/create").permitAll()
+                .antMatchers(HttpMethod.POST,"/login").permitAll()
+                .antMatchers(HttpMethod.GET,"/product/find").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticatorFilter(authenticationManager()))

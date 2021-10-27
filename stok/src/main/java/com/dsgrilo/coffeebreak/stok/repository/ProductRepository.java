@@ -11,5 +11,6 @@ import java.util.UUID;
 @Repository
 public interface ProductRepository extends JpaRepository<ProductModel, UUID> {
 
+        ProductModel findByName(String name);
 
 }

@@ -18,19 +18,31 @@ import javax.validation.constraints.NotNull;
 @Getter
 public class ComponentModel {
 
+
     @Id
     private UUID component_id = UUID.randomUUID();
 
     @NotBlank
     private String ingredient_id;
 
+
     @NotNull
     private float ingredient_amount;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+
+    @OneToOne
+    private IngredientModel getIngredientModel(String ingredient_id){
+
+        return getIngredientModel(ingredient_id);
+
+    }
+
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "component_idFK")
-    private ProductModel productModel;
+    private ProductModel getPrdocutModel(){
+        return getPrdocutModel();
+    }
 
 
 }

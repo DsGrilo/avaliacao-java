@@ -1,5 +1,4 @@
 package com.dsgrilo.coffeebreak.stok.controller;
-import com.dsgrilo.coffeebreak.stok.exception.DataBaseException;
 import com.dsgrilo.coffeebreak.stok.model.UserModel;
 import com.dsgrilo.coffeebreak.stok.repository.UserRepository;
 import com.dsgrilo.coffeebreak.stok.security.EncoderPassword;
@@ -7,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.ConnectException;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -38,7 +36,7 @@ public class UserController {
 
     // Método de GET BY ID
     @GetMapping("/find/{uuid_user}")
-    public ResponseEntity<Optional<UserModel>> findByUUID(@PathVariable("uuid_user") UUID uuid_user) throws DataBaseException {
+    public ResponseEntity<Optional<UserModel>> findByUUID(@PathVariable("uuid_user") UUID uuid_user) {
 
             Optional<UserModel> user = userRepository.findById(uuid_user);
 
