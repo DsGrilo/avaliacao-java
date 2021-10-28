@@ -1,42 +1,27 @@
-# Avaliação Java
-## SISTEMA DE CONTROLE DE ESTOQUE 
-## ENDPOINTS CRIADOS
+# <h1 align="center" > Avaliação Java <h1>
+## <h1 align="center"> SISTEMA DE CONTROLE DE ESTOQUE <h1> 
 
-### USER
+### <h2 align="center" >-> <a href="https://documenter.getpostman.com/view/16976088/UV5dfFES" target="_tab"> DOCUMENTAÇÃO DA API </a> <-  <h2>
 
-#### POST /user/create  - CRIA O USUÁRIO - RETORNO 200 - SEM AUTENTICAÇÃO
-![image](https://user-images.githubusercontent.com/86542162/139195658-d80e1e74-b6ff-44bf-b8a3-c843ebeaeb88.png)
+  #### <h3 align="center"> Dependências Utilizadas </h3>
+   
+#### Spring Boot Validation - Para validação de de campos 
+#### Spring Boot Security - Para Conferência de Login utilizando OAUTH 
+#### JAVA JWT - UTILIZADO PARA GERAÇÃO E VALIDAÇÃO DE TOKENS
+#### DRIVER POSTGRESQL = UTILIZADO PARA CONEXÃO COM O BANCO DE DADOS
+#### LOMBOK - UTILIZADO PARA EVITAR VERBOSIDADE
+#### DOCKER-COMPOSE - PARA CRIAR O BANCO DE DADOS EM AMBIENTE DOCKER 
 
-#### POST /login - - GERA O TOKEN DE 10 MIN PARA O USUÁRIO - RETORNO RETORNO 200 - SEM AUTENTICAÇÃO 
 
-![image](https://user-images.githubusercontent.com/86542162/139195793-ce2ed6ee-d1a5-4056-951c-b82d9fdff065.png)
+-- PLANEJAMENTOS FUTURO
 
-#### GET /user/find - RETORNA LISTA DE USUÁRIOS CADASTRADOS - RETORNO 200 - AUTENTICADO
+- Criação de Refresh Token e Geração de Logs
 
-#### GET /user/find/{UUID} - RETORNA O USUÁRIO ESPECIFÍCO - RETORNO 200 - AUTENTICADO
 
-### INGREDIENTES 
+-- EM PROCESSO DE FINALIZAÇÃO 
 
-#### POST /ingredient/create - CRIA UM INGREDIENTE - RETORNO 201 - AUTENTICADO 
+- Upload de Imagem do Produto
+- Remoção das variaveis de ambiente no código
 
-![image](https://user-images.githubusercontent.com/86542162/139196124-32258ee3-11fd-4766-b869-0b4bcd1b08eb.png)
 
-#### GET /ingredient/find - RETORNA LISTA DE INGREDIENTES CADASTRADAS - RETORNO 200 - AUTENTICADO
 
-#### GET /ingredient/find/{id} - RETORNA INGREDIENTE ESPECIFICO - RETORNO 200 - AUTENTICADO
-
-#### PUT /ingredient/update/{id} - PERMITE ATUALIZAR INFOS DE UM INGREDIENTE - RETORNO 200 - AUTENTICADO
-
-#### PUT /inventory/{id} - PERMITE ALTERAR SOMENTE A QUANTIDADE DO PRODUTO - RETORNO 200 - AUTENTICADO
-
-### PRODUCT 
-
-#### POST /product/create - PERMITE CRIAR O PRODUTO E ADICIONAR SEUS COMPONENTES - RETORNO 201 - AUTENTICADO
-
-#### GET /product/find - RETORNA LISTA DE PRODUTOS CADASTRADOS - RETORNO 200 - AUTENTICADO
-
-#### GET /product/find/{name} - RETORNA UM PRODUTO ESPECIFÍCO - RETORNO 200 - AUTENTICADO
-
-#### POST /product/image/{NAME} - ADICIONA UMA IMAGEM AO PRODUTO ( NÃO FINALIZADO ) - AUTENTICADO
-
-#### GET /product/verify/{name} - VERIFICA SE O PRODUTO ESTÁ ELEGÍVEL PARA VENDA - SEM AUTENTICAÇÃO
