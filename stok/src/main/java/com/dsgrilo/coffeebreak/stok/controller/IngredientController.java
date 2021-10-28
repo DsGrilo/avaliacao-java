@@ -64,7 +64,7 @@ public class IngredientController {
 
     @PutMapping("/inventory/{id}")
     public ResponseEntity<IngredientModel> updateInventory(@PathVariable("id") String id,
-                                                      @RequestBody @Valid IngredientModel ingredientModel  ) throws ResourceNotFoundException {
+                                                      @RequestBody IngredientModel ingredientModel  ) throws ResourceNotFoundException {
 
          IngredientModel ingredient = ingredientRepository.getById(id).orElseThrow(() ->
                  new ResourceNotFoundException("Ingrediente não encontrado"));

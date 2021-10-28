@@ -36,6 +36,7 @@ public class ProductController {
 
         float costProduct = 0;
 
+        // FOR EACH para resgatar os preõs de todos os ingredientes
         for (ComponentModel ingredients: productModel.getComponents()) {
 
                 var id = ingredients.getIngredient_id();
@@ -52,7 +53,7 @@ public class ProductController {
 
         }
 
-
+            //adiciona o custo do produto no modelo de produto e salva no banco de dados
             productModel.setCostProduct(costProduct);
             ProductModel product = productRepository.save(productModel);
 
@@ -60,6 +61,20 @@ public class ProductController {
 
             return ResponseEntity.status(HttpStatus.CREATED).body(product);
 
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<ProductModel> updateProduct(@PathVariable("name") String name, @RequestBody @Valid ProductModel productModel) throws ResourceNotFoundException {
+        ProductModel updateProduct = productRepository.findByName(name).orElseThrow(() ->
+                new ResourceNotFoundException("Produto não cadastrado"));
+
+        updateProduct.setUnity_price(productModel.getUnity_price());
+        updateProduct.setName(productModel.getName());
+        updateProduct.setUnity_measure(productModel.getUnity_measure());
+
+        productRepository.save(updateProduct);
+
+        return ResponseEntity.ok().body(updateProduct);
     }
 
 
@@ -103,7 +118,7 @@ public class ProductController {
     @GetMapping("/verify/{name}")
     public ResponseEntity verifyProduct(@PathVariable("name") String name) throws ResourceNotFoundException {
         ProductModel productModel = productRepository.findByName(name).orElseThrow(() ->
-                new ResourceNotFoundException("Ingrediente não cadastrado"));
+                new ResourceNotFoundException("Produto não cadastrado"));
 
         for (ComponentModel component: productModel.getComponents())
         {

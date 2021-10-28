@@ -1,5 +1,6 @@
 package com.dsgrilo.coffeebreak.stok.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 import org.hibernate.type.descriptor.sql.LobTypeMappings;
 
@@ -17,7 +18,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class ProductModel  {
 
-
+    @ApiModelProperty(value = "UUID gerado automaticamente ao criar o produto")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(updatable = false, unique = true, nullable = false)
