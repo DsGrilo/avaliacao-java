@@ -14,7 +14,6 @@ import java.util.UUID;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "ingredient")
 public class IngredientModel {
 
     @Id
@@ -34,14 +33,15 @@ public class IngredientModel {
     @Column(nullable = false)
     private String unity_measure;
 
+
     @NotNull
     @Column(nullable = false)
     private Float amount;
 
     @NotNull
     @Column(nullable = false)
-    @JsonDeserialize()
     private Float unity_price;
+
 
 
 }

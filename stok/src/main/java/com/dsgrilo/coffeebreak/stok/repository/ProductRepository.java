@@ -6,11 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
 public interface ProductRepository extends JpaRepository<ProductModel, UUID> {
 
-        ProductModel findByName(String name);
+        Optional<ProductModel> findByName(String name);
 
 }

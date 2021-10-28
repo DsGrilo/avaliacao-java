@@ -9,6 +9,8 @@ import java.util.UUID;
 @Repository
 public interface IngredientRepository extends JpaRepository<IngredientModel, UUID> {
 
-    IngredientModel getById(String id);
+    Optional<IngredientModel> getById(String id);
 
+
+    void deleteById(String id);
 }

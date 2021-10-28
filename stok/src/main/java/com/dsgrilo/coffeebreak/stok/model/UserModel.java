@@ -2,10 +2,7 @@ package com.dsgrilo.coffeebreak.stok.model;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import net.bytebuddy.implementation.bind.annotation.Default;
 
 import javax.persistence.*;
@@ -30,7 +27,7 @@ public class UserModel {
     private UUID uiid_user = UUID.randomUUID();
 
     @NotBlank(message = "Login is Required")
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String login;
 
     @Email(message = "Invalid Email")

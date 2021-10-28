@@ -2,6 +2,7 @@ package com.dsgrilo.coffeebreak.stok.controller;
 import com.dsgrilo.coffeebreak.stok.model.UserModel;
 import com.dsgrilo.coffeebreak.stok.repository.UserRepository;
 import com.dsgrilo.coffeebreak.stok.security.EncoderPassword;
+import javassist.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,13 +37,14 @@ public class UserController {
 
     // Método de GET BY ID
     @GetMapping("/find/{uuid_user}")
-    public ResponseEntity<Optional<UserModel>> findByUUID(@PathVariable("uuid_user") UUID uuid_user) {
+    public ResponseEntity<UserModel> findByUUID(@PathVariable("uuid_user") UUID uuid_user) throws NotFoundException {
 
-            Optional<UserModel> user = userRepository.findById(uuid_user);
+        UserModel user = userRepository.findById(uuid_user).orElseThrow(() ->
+                new NotFoundException("Falha ao consultar banco de dados")
+            );
 
-            if (user.isEmpty()){
-                return ResponseEntity.badRequest().body(user);
-            }
+
+
 
             return ResponseEntity.ok().body(user);
 
